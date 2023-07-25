@@ -24,7 +24,15 @@ export default defineConfig({
             ]
         })
     ],
+    // css处理
+    // css: {
+    //     postcss: {
 
+    //     },
+    //     preprocessorOptions: {
+
+    //     }
+    // },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
