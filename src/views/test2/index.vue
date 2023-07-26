@@ -1,5 +1,5 @@
 <template>
-    <router-view/>
+   <div>测试页面222</div>
 </template>
 
 <script setup>

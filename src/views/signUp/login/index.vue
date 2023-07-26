@@ -1,5 +1,5 @@
 <template>
-    <router-view/>
+   <div>登录</div>
 </template>
 
 <script setup>

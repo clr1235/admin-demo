@@ -1,5 +1,5 @@
 <template>
-    <router-view/>
+   <div>没有权限</div>
 </template>
 
 <script setup>
