@@ -70,8 +70,6 @@ class Service {
         config,
         options,
     ) => {
-        // get请求添加时间戳
-        params.timestamp = Date.parse(new Date()) / 1000
         return this.request({
             url,
             method: 'get',
@@ -114,6 +112,14 @@ class Service {
             const signstr = sign(KP, config_["X-Kcrm-SSID"], config_["X-Kcrm-Nonce"], config_["X-Kcrm-Timestamp"],url);
             config.headers['X-Kcrm-Sign'] = signstr;
             console.log(config, 'http请求config===>>>')
+            // get请求添加时间戳
+            if (config.method === 'get') {
+                // console.log(params, '========')
+                config.params = Object.assign({}, config.param, {
+                    timestamp: Date.parse(new Date()) / 1000
+                })
+            }
+            
             return config;
         }, (error) => {
             // 对请求错误所做的处理

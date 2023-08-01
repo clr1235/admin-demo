@@ -49,8 +49,22 @@ const sign = (KP, ssid, nonce, timestamp,url) => {
     return md5aesEn;
 };
 
+/* 登录密码加密 */
+const encryptPassword = (KP, password) => {
+    const aesPass = aes.en(password, KP);
+    return aesPass;
+};
+
+/* 登录用户名加密 */
+const uname = (KP, username) => {
+    const aesUser = aes.en(username, KP);
+    return aesUser;
+};
+
 export {
     aes,
     md5,
     sign,
+    encryptPassword,
+    uname,
 };
