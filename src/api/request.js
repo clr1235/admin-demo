@@ -51,7 +51,7 @@ class Service {
     // 合并传入的配置和默认的配置
     mergeOptions = (options) => {
         const contentHeader = {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json;charset=UTF-8'
         }
         const {headers: optionsHeader={}, ...baseOptions} = options;
         const headersObj = {...contentHeader, ...optionsHeader}
