@@ -111,7 +111,7 @@ class Service {
             const url = config.url.split('?')[0]; // 截取接口，摒弃参数
             const signstr = sign(KP, config_["X-Kcrm-SSID"], config_["X-Kcrm-Nonce"], config_["X-Kcrm-Timestamp"],url);
             config.headers['X-Kcrm-Sign'] = signstr;
-            console.log(config, 'http请求config===>>>')
+            // console.log(config, 'http请求config===>>>')
             // get请求添加时间戳
             if (config.method === 'get') {
                 // console.log(params, '========')
@@ -132,7 +132,7 @@ class Service {
     httpResponseInterceptors(axiosInstance, messageConfig) {
         axiosInstance.interceptors.response.use((response) => {
             // 处理响应数据,完事之后返回处理之后的结果
-            console.log(response, 'http响应===>>>')
+            // console.log(response, 'http响应===>>>')
             const {status} = response
             if (status === 200) {
                 return Promise.resolve(response.data)

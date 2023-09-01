@@ -9,7 +9,7 @@ const staticRoutes = [
     },
     {
         path: '/login',
-        name: 'Login',
+        name: 'login',
         meta: {
             title: '登录'
         },
@@ -18,7 +18,7 @@ const staticRoutes = [
     {
         index: '43',
         path: '/register',
-        name: 'Register',
+        name: 'register',
         meta: {
             title: '注册'
         },
