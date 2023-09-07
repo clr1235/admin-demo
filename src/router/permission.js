@@ -5,7 +5,7 @@ import router from './index'
 
 import {getToken} from '@/utils/cache/cookies'
 import {isWhiteList} from '@/constants'
-import {usePermissionStore} from '@stores/index'
+import {usePermissionStore, useUserStore} from '@stores/index'
 
 // 配置网页进度条
 NProgress.configure({ showSpinner: false });
@@ -14,6 +14,11 @@ NProgress.configure({ showSpinner: false });
 // 全局路由配置
 router.beforeEach(async (to, from, next) => {
     NProgress.start()
+    let userStore = null;
+    if (!userStore) {
+        userStore = useUserStore();
+        userStore.getUserInfo();
+    }
     // 处理菜单
     const permissionStore = usePermissionStore()
     await permissionStore.dispatchRoutes()

@@ -1,9 +1,10 @@
 import Axios from 'axios'
 import {getToken, getSSID} from "@/utils/index.js";
-import {useUserStore} from '@/stores/index'
+// import {useUserStore} from '@/stores/index'
 import {sign} from '@/utils/crypto'
 
-const userStore = useUserStore();
+let userStore = {ssid: 'ssid'}
+// console.log(userStore, 'userStore====')
 
 const getHeaders = () => {
     const config_ = {

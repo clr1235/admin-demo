@@ -6,7 +6,9 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
-console.log(import.meta.url, 'import.meta.url====')
+import {mockApiId} from '@/constants'
+
+const mockUrlKey = `/${mockApiId}/api`
 // https://vitejs.dev/config/
 export default defineConfig({
     // 指定用于加载.env文件的目录地址
@@ -37,10 +39,10 @@ export default defineConfig({
     server: {
         // 开发代理
         proxy: {
-            '/api': {
-                target: 'https://testcrm.jlkc56.com',
+            [mockUrlKey]: {
+                target: 'https://mockapi.eolink.com/',
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, ''),
+                // rewrite: (path) => path.replace(/^\/api/, ''),
             },
             '/crm': {
                 target: 'https://testcrm.jlkc56.com',
