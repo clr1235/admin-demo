@@ -6,7 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
-import {mockApiId} from '@/constants'
+import {mockApiId} from './src/constants'
 
 const mockUrlKey = `/${mockApiId}/api`
 // https://vitejs.dev/config/
