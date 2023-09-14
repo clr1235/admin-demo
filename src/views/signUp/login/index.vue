@@ -50,7 +50,6 @@ const onSubmit = () => {
             userName: username,
             password,
             key: '',
-            captcha: '04DpnjaguNjY5cPUWwTtdcK0sTfx80zh',
             captchaId: 0,
             checked: false
         }

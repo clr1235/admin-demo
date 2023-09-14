@@ -44,11 +44,6 @@ export default defineConfig({
                 changeOrigin: true,
                 // rewrite: (path) => path.replace(/^\/api/, ''),
             },
-            '/crm': {
-                target: 'https://testcrm.jlkc56.com',
-                changeOrigin: true,
-                logLevel: 'debug', // 日志 查看代理服务详情
-            },
         }
     },
     resolve: {
