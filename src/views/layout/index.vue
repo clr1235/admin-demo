@@ -12,7 +12,6 @@
             <a-layout>
                 <layout-header></layout-header>
                 <layout-content></layout-content>
-                <layout-footer></layout-footer>
             </a-layout>
         </a-layout>
     </a-config-provider>
@@ -24,7 +23,6 @@ import { ref } from 'vue'
 import LayoutHeader from './components/LayoutHearder.vue'
 import LayoutSider from './components/LayoutSider.vue'
 import LayoutContent from './components/LayoutContent.vue'
-import LayoutFooter from './components/LayoutFooter.vue'
 
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import dayjs from 'dayjs';
