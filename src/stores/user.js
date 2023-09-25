@@ -1,34 +1,31 @@
 import { defineStore } from 'pinia'
-
+import {ref} from 'vue'
 import {userApi} from '@/api'
 import {setToken, removeToken} from '@/utils/cache/cookies'
 
-export const useUserStore = defineStore('userInfo', {
-    state: () => {
-        return {
-            ssid: '',
-            userInfo: {}
+
+export const useUserStore = defineStore('userInfo', () => {
+    const user = {
+        roles: [],
+        perms: [],
+    }
+    const userInfo = ref(user)
+
+    async function getCaptcha() {
+        const res = await userApi.getCaptcha();
+        console.log(res, 'res-s-s-s-s-s-')
+    }
+    async function login(params) {
+        const {code, data} = await userApi.login(params)
+        if (code === '00000') {
+            console.log(data, 'data=======')
         }
-    },
-    actions: {
-        setSsid(str) {
-            this.ssid = str;
-        },
-        async getUserInfo() {
-           const res = await userApi.getUserInfo()
-           this.userInfo = res;
-        },
-        async login(params) {
-            const {code, data} = await userApi.login(params)
-            if (code === 0) {
-                setToken(data.key)
-            }
-        },
-        async logout() {
-            const res = await userApi.logout()
-            console.log(res, 'res===>>>>>>')
-            removeToken()
-        }
+    }
+
+    return {
+        userInfo,
+        login,
+        getCaptcha
     }
 })
 

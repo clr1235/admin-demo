@@ -1,7 +1,9 @@
 import {h} from 'vue'
 import { defineStore } from 'pinia'
-import router from '@router'
-import asyncRoutes from '@router/asyncRoutes'
+import router from '@/router'
+import asyncRoutes from '@/router/asyncRoutes'
+
+const modules = import.meta.glob('../views/**/*.vue')
 
 export const usePermissionStore = defineStore('permission', {
     state: () => {
@@ -12,6 +14,7 @@ export const usePermissionStore = defineStore('permission', {
     actions: {
         // 将动态路由处理成左侧菜单
         handleRoutes() {
+            console.log(modules, 'modules----', Object.keys(modules))
             this.asyncRoutes = asyncRoutes.map(item => {
                 return {
                     key: item.name,

@@ -13,7 +13,7 @@ const staticRoutes = [
         meta: {
             title: '登录'
         },
-        component: () => import(/* webpackChunkName: "login" */ '@views/signUp/login/index.vue')
+        component: () => import(/* webpackChunkName: "login" */ '@/views/signUp/login/index.vue')
     },
     {
         index: '43',
@@ -22,7 +22,7 @@ const staticRoutes = [
         meta: {
             title: '注册'
         },
-        component: () => import(/* webpackChunkName: "register" */ '@views/signUp/register/index.vue')
+        component: () => import(/* webpackChunkName: "register" */ '@/views/signUp/register/index.vue')
     },
     {
         index: '43',
@@ -31,7 +31,7 @@ const staticRoutes = [
         meta: {
             title: '没有权限'
         },
-        component: () => import(/* webpackChunkName: "403" */ '@views/error/403.vue')
+        component: () => import(/* webpackChunkName: "403" */ '@/views/error/403.vue')
     },
     {
         index: '43',
@@ -41,7 +41,7 @@ const staticRoutes = [
             title: '访问路径不存在'
         },
         hidden: true,
-        component: () => import(/* webpackChunkName: "403" */ '@views/error/404.vue')
+        component: () => import(/* webpackChunkName: "403" */ '@/views/error/404.vue')
     },
     {
         index: '43',
@@ -57,7 +57,7 @@ const staticRoutes = [
                     title: '系统首页',
                     permiss: '1'
                 },
-                component: () => import(/* webpackChunkName: "table" */ '@views/home/index.vue')
+                component: () => import(/* webpackChunkName: "table" */ '@/views/home/index.vue')
             },
         ]
     }

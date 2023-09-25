@@ -1,7 +1,7 @@
 
-const Test1 = () => import('@views/test1/index.vue')
-const Test2 = () => import('@views/test2/index.vue')
-const Test3 = () => import('@views/test3/index.vue')
+const Test1 = () => import('@/views/test1/index.vue')
+const Test2 = () => import('@/views/test2/index.vue')
+const Test3 = () => import('@/views/test3/index.vue')
 
 import {
     UserOutlined,

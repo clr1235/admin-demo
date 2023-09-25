@@ -14,7 +14,7 @@
 <script setup>
 import {ref, reactive} from 'vue'
 import {useRouter} from 'vue-router'
-import {useMenuStore, usePermissionStore} from '@stores/index.js'
+import {useMenuStore, usePermissionStore} from '@/stores/index.js'
 
 
 const store = useMenuStore()

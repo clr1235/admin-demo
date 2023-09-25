@@ -31,7 +31,7 @@
 import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons-vue'
 import {useRouter} from 'vue-router'
 
-import {useUserStore, useMenuStore} from '@stores/index'
+import {useUserStore, useMenuStore} from '@/stores/index'
 
 const userStore = useUserStore()
 const menuStore = useMenuStore()

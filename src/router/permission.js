@@ -5,7 +5,7 @@ import router from './index'
 
 import {getToken} from '@/utils/cache/cookies'
 import {isWhiteList} from '@/constants'
-import {usePermissionStore, useUserStore} from '@stores/index'
+import {usePermissionStore, useUserStore} from '@/stores/index'
 
 // 配置网页进度条
 NProgress.configure({ showSpinner: false });
@@ -14,22 +14,32 @@ NProgress.configure({ showSpinner: false });
 // 全局路由配置
 router.beforeEach(async (to, from, next) => {
     NProgress.start()
-    let userStore = null;
-    if (!userStore) {
-        userStore = useUserStore();
-        userStore.getUserInfo();
-    }
-    // 处理菜单
-    const permissionStore = usePermissionStore()
-    await permissionStore.dispatchRoutes()
-    await permissionStore.handleRoutes()
-
     // 登录token
     if (getToken()) {
         if (to.path === '/login' || to.path === '/login/') {
             next({path: '/'})
         } else {
-            next()
+            const userStore = useUserStore()
+            const hasRoles = userStore?.userInfo?.roles?.length > 0
+            if (hasRoles) {
+                // 么有匹配到任何路由，跳转404
+                if (to.matched.length === 0) {
+                    from.name ? next({name: from.name}) : next('/404')
+                } else {
+                    next()
+                }
+            } else {
+                // const {roles} = await userStore.getUserInfo()
+                // try {
+                //     const {roles} = await userStore.getUserInfo()
+                //     next({ ...to, replace: true });
+                // } catch (error) {
+                //     // 移除token 并跳转登录页
+                //     await userStore.resetStore()
+                //     next(`/login?redirect=${to.path}`)
+                // }
+                next()
+            }
         }
         NProgress.done()
     } else {
@@ -45,4 +55,9 @@ router.beforeEach(async (to, from, next) => {
 })
 router.afterEach(() => {
     NProgress.done()
+})
+
+router.onError(() => {
+    // 路由发生错误后销毁进度条
+    NProgress.remove()
 })
